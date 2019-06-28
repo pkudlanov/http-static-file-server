@@ -3,9 +3,14 @@ const app = require('../lib/app');
 const { getFilePath } = require('../lib/utils/filePath');
 
 describe('app static server', () => {
-    it('get a file path from url path', () => {
+    it('get a file path from url pathname', () => {
         const filePath = getFilePath('/index.html');
-        expect(filePath).toEqual('./public/index.html');
+        expect(filePath).toEqual(expect.stringContaining('/public/index.html'));
+    });
+
+    it('get a file path from url pathname but stays in public', () => {
+        const filePath = getFilePath('/../index.html');
+        expect(filePath).toEqual(expect.stringContaining('/public/index.html'));
     });
 
     it('gets an index.html if we request it', () => {
