@@ -13,7 +13,7 @@ describe('app static server', () => {
             .get('/index.html')
             .then(res => {
                 expect(res.status).toEqual(200);
-                expect(res.text).toEqual(expect.stringContaining('<h1>Greetngs to all Far and Near!!!</h1>'));
+                expect(res.text).toEqual(expect.stringContaining('<h1>Greetings to all Far and Near</h1>'));
             });
     });
 });
