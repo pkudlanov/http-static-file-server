@@ -16,4 +16,13 @@ describe('app static server', () => {
                 expect(res.text).toEqual(expect.stringContaining('<h1>Greetings to all Far and Near</h1>'));
             });
     });
+
+    it('responds with not found if we request a nonexistant path', () => {
+        return request(app)
+            .get('/none-existant-path')
+            .then(res => {
+                expect(res.status).toEqual(404);
+                expect(res.text).toEqual('Not Found');
+            });
+    });
 });
